@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Email Validation</title>
+        <style>
+            *{
+                margin:0;
+                padding:0;
+                font-family: 'Poppins';
+            }
+            body{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                min-height: 100vh;
+                background:#373737;
+            }
+            h1{
+                position: relative;
+                font-size:20px;
+                color:#f9f9f9;
+                letter-spacing: 1px;
+                font-weight: 500;
+                margin-bottom: 5px;
+            }
+            #form{
+                position: relative;
+            }
+            #form #email{
+                width: 300px;
+                background:#292929;
+                outline:none;
+                border:none;
+                padding:10px;
+                border-radius: 6px;
+                color:#fff;
+                font-style:18px;
+
+            }
+            #form .inputbox{
+                position: relative;
+            }
+            #text{
+                display: block;
+                color:#000;
+                font-weight: 300;
+                font-style: italic;
+                padding: 5px;
+            }
+            
+            #form.invalid .inputbox::before{
+                content: "";
+                position: absolute;
+                right:12px;
+                top:12px;
+                width:24px;
+                height: 24px;
+                background: url(dewan.jpg);
+                background-size:cover;
+            }
+        </style>
+    </head>
+    <body>
+        <div>
+            <form id="form" action="#">
+                <h1>Email Validation</h1>
+                <div class="inputbox">
+                    <input type="text" name="" id="email" placeholder="enter your valid email" onkeydown="validation()">
+                    <span id="text"></span>
+                </div>
+            </form>
+        </div>
+        <script type="text/javascript">
+            function validation(){
+                var form = document.getElementById("form");
+                var email = document.getElementById("email").value;
+                var text = document.getElementById("text");
+                var pattern = /^[^]+@[^]+\.[a-z]{2,3}$/;
+
+                if(email.match(pattern))
+                {
+                    form.classList.add("valid");
+                    form.classList.remove("invalid");
+                    text.innerHTML = "Your Email Address is Valid";
+                    text.style.color = "#00ff00";
+
+                }else{
+                    form.classList.remove("valid");
+                    form.classList.add("invalid");
+                    text.innerHTML = "Please Input Valid Email Address";
+                    text.style.color = "#ff0000";
+
+                }
+
+                if(email == ""){
+                    form.classList.remove("valid");
+                    form.classList.remove("invalid");
+                    text.innerHTML = "";
+                    text.style.color = "#00ff00";
+
+                }
+            }
+
+        </script>
+        </body>
+    </body>
+
+
+
+</html>
